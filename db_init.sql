@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS ratings (user_id INTEGER, rating INTEGER);
+
+ALTER TABLE tasks ADD COLUMN executor_id INTEGER;
+ALTER TABLE tasks ADD COLUMN status TEXT DEFAULT 'новое';
+    
+CREATE TABLE IF NOT EXISTS users (
+    user_id INTEGER PRIMARY KEY,
+    rating REAL DEFAULT 0,
+    votes INTEGER DEFAULT 0
+);
