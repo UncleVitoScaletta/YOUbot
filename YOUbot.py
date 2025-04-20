@@ -322,23 +322,15 @@ async def user_profile(message: types.Message):
     avg_rating_text = f"{avg_rating:.1f} ⭐" if avg_rating else "Нет оценок"
 
     profile_text = (
-        f"<b>👤 Профиль</b>
-"
-        f"🆔 ID: <code>{user_id}</code>
-"
-        f"🏷 Имя: {username}
-"
-        f"⭐ Рейтинг: {avg_rating_text}
-"
-        f"✅ Выполнено заданий: {completed}
-"
+        f"<b>👤 Профиль</b>\n"
+        f"🆔 ID: <code>{user_id}</code>\n"
+        f"🏷 Имя: {username}\n"
+        f"⭐ Рейтинг: {avg_rating_text}\n"
+        f"✅ Выполнено заданий: {completed}\n"
         f"📌 Размещено заданий: {posted}"
     )
 
     await message.answer(profile_text, parse_mode="HTML")
-
-
-
 @dp.callback_query_handler(lambda c: c.data.startswith("finish_"))
 async def finish_task(callback_query: types.CallbackQuery, state: FSMContext):
     task_id = int(callback_query.data.split("_")[1])
